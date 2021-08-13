@@ -11,7 +11,10 @@ This scraper is written in Python and utilizes the Scrapy open-source framework 
 
 ![css](https://user-images.githubusercontent.com/71391244/129333057-758b3b14-e5cc-4b37-a6dd-32e6cc3a1a03.png)
 
-The spider folder contains the scraper.py file with the Scrapy spider. The Scraped Data folder contains all of the individually scraped price ranges in a .json file. The EDA directory contains the Jupyter notebook that combines each .json into a dataframe, cleans the data, and performs an exploratory data analysis to find the mean price per number of bedrooms. 
+# Folders
+* The spider folder contains the scraper.py file with the Scrapy spider. 
+* The Scraped Data folder contains all of the individually scraped price ranges in a .json file. 
+* The EDA folder contains the Jupyter notebook that combines each .json into a dataframe, cleans the data, and performs an exploratory data analysis to find the mean price per number of bedrooms. 
 
 # Items to Note
 *  Airbnb limits search results to 300. In order to find all of the listings in a particular area, you will have to search Airbnb manually to find the breaking point of 300 results. This said, it's relatively easy to find the breaking point of 300 lisitings when you break the queries into bins based on price range i.e. 0-75, 75-90, 90-110, etc. I would be interested in hearing of ways to automate this. 
