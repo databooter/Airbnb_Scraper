@@ -1,17 +1,26 @@
 import scrapy
 
 class ListsSpider(scrapy.Spider):
+    # name of spider
     name = "listings"
 
-    city = 'Nashville-TN'
-    check_in = '2022-08-25'
-    check_out = '2022-08-28'
+    # change this variable to desired city (must be formatted "City-State_or_Country")
+    city = 'Deauville-Fr'
 
+    # change these variables to desired timeframe (must be formatted "YYYY-MM-DD")
+    check_in = '2021-12-23'
+    check_out = '2022-01-02'
+
+    # change these variables to desired price range (must use price range bins to obtain more than 300 listings)
+    price_max = ""
+    price_min = ""
+
+    # The starting url formatted as an f-string with above variables
     start_urls = [
-        f'https://www.airbnb.ie/s/{city}/homes?&checkin={check_in}&checkout={check_out}&adults=16&price_max=1100&display_currency=EUR'
+        f'https://www.airbnb.ie/s/{city}/homes?&checkin={check_in}&checkout={check_out}&price_min={price_min}&price_max{price_max}&display_currency=EUR'
     ]
 
-
+    # parse
     def parse(self, response):
         for tile in response.css('div._1e541ba5'):
             yield {
@@ -23,10 +32,9 @@ class ListsSpider(scrapy.Spider):
                 'beds': (tile.css('span._3hmsj ::text').extract())[2],
                 'bathrooms': (tile.css('span._3hmsj ::text').extract())[3],
                 'price': (tile.css('span._1p7iugi ::text')).get(),
-                'rating': tile.css('span._10fy1f8 ::text').get(),
-                # 'num_reviews': (tile.css('span._a7a5sx ::text').extract())[2]
-                # 'superhost': tile.css('div._1u0inz4').get()
+                'rating': tile.css('span._10fy1f8 ::text').get()
             }
+        # crawl
         next_page = response.css('a._za9j7e ::attr(href)').get()
         if next_page is not None:
             next_page = response.urljoin(next_page)
