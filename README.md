@@ -1,7 +1,7 @@
 # Airbnb_Scraper
  
 ![Mean_nightly_rate_Deauville](https://user-images.githubusercontent.com/71391244/129249901-372cc8f4-f082-40d7-bf25-37c0b2b79ca1.jpg)
-# Airbnb Scraper
+
 A scraper that acquires data from the Airbnb results page.
 
 Using this script, you are able to search a city, dates, and price range to obtain all of the available listings' name, header, url, price, bedrooms, bathrooms, or any other result on the Airbnb results page. 
