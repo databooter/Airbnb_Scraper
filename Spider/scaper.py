@@ -8,8 +8,8 @@ class ListsSpider(scrapy.Spider):
     city = 'Deauville-Fr'
 
     # change these variables to desired timeframe (must be formatted "YYYY-MM-DD")
-    check_in = '2021-12-23'
-    check_out = '2022-01-02'
+    check_in = ''
+    check_out = ''
 
     # change these variables to desired price range (must use price range bins to obtain more than 300 listings)
     price_max = ""
